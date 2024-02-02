@@ -16,5 +16,7 @@
         2. .env.development, // 在开发环境下 加载
         3. .env.production， // 在生产环境下 加载
     2. 相关环境变量的文件定义好后， 并不能从process.env 中获取到定义的环境变量，我们还需要使用vite 提供的 loadEnv 函数来将环境变量的并入process.env中， loadEnv 返回的就是整个process.env, 这个时候可以在server 端 获取到
-        1. loadEnv(mode, process.cwd(), '');
+        1. loadEnv(mode, envDir, prefixes); 
+        2. mode是只开发还是生产环境， envDir 是加载env文件的路径， prefixes是指暴漏在生产环境下环境变量的前缀，默认是VITE_
     3.  在client端代码， vite 为了防止一些私密的变量暴露， 就做了变量区分， 只有VITE_ 开头的变量才能在client 端被获取， 也可以在viteConfigjs 中通过envPrefix 更改VITE_ 为任意字符串
+## loading
